@@ -1,0 +1,87 @@
+<table style="width:100%;">
+<?php if($count_request>0): ?>
+<tbody width="100%">
+<tr>
+<td class="span120 bold">Recruiter</td>
+<td class="span120 bold">Hospital</td>
+<td class="span150 bold">Location</td>
+<td class="span100 bold">Status</td>
+<td class="span150 bold">Release Documents</td>
+<td class="span120 bold">Messages</td>
+<td class="span150 bold">Job Accepted</td>
+<td class="span120 bold">Comments</td>
+</tr>
+</tbody>
+<?php foreach($connection_request as $key => $connection): ?>
+<tbody>
+<tr>
+<td><?php echo $connection["recruiter_name"]; ?></td>
+<td class="redunderline"><?php echo $connection["hospital_name"]; ?></td>
+<td><?php echo $connection["location"]; ?></td>
+<td>
+<select name="status_<?php echo $status; ?><?php echo $key; ?>" id="status_<?php echo $status; ?><?php echo $key; ?>" style="width:100px;" onchange="set_connections(this.value,<?php echo $connection['record_id']; ?>)">
+<option value="">Select</option>
+<?php if($status=='request'): ?>
+<?php if($connection["comm_status"]==2): ?>
+<option value="AA" selected="selected">Accept</option>
+<option value="AD">Decline</option>
+<option value="AI">Ignore</option>
+<?php endif; ?>
+<?php if($connection["comm_status"]==-99999): ?>
+<option value="AA">Accept</option>
+<option value="AD" selected="selected">Decline</option>
+<option value="AI">Ignore</option>
+<?php endif; ?>
+<?php if($connection["comm_status"]==0): ?>
+<option value="AA">Accept</option>
+<option value="AD">Decline</option>
+<option value="AI" selected="selected">Ignore</option>
+<?php endif; ?>
+<?php endif; ?>
+<?php if($status=='current'): ?>
+<?php if($connection["comm_status"]==2): ?>
+<option value="AA" selected="selected">Connected</option>
+<option value="AD">Remove</option>
+<?php endif; ?>
+<?php if($connection["comm_status"]==-99999): ?>
+<option value="AA">Connected</option>
+<option value="AD" selected="selected">Remove</option>
+<?php endif; ?>
+<?php endif; ?>
+<?php if($status=='deleted'): ?>
+<option value="AA">Reconnect</option>
+<option value="AF">Delete Forever</option>
+
+<?php endif; ?>
+</select>
+</td>
+<td>
+<select name="document_release_<?php echo $status; ?><?php echo $key; ?>" id="document_release_<?php echo $status; ?><?php echo $key; ?>" style="width:100px;" onchange="set_connections(this.value,<?php echo $connection['record_id']; ?>)">
+<?php if($connection["doc_release"]==1): ?>
+<option value="DY" selected="selected">Yes</option>
+<option value="DN">No</option>
+<option value="DH">Hold</option>
+<?php endif; ?>
+<?php if($connection["doc_release"]==0): ?>
+<option value="DY">Yes</option>
+<option value="DN" selected="selected">No</option>
+<option value="DH">Hold</option>
+<?php endif; ?>
+<?php if($connection["doc_release"]==2): ?>
+<option value="DY">Yes</option>
+<option value="DN">No</option>
+<option value="DH" selected="selected">Hold</option>
+<?php endif; ?>
+</select>
+</td>
+<td class="redunderline">3</td>
+<td><input type="radio" name="job_accepted_<?php echo $status; ?><?php echo $key; ?>" id="job_yes_<?php echo $status; ?><?php echo $key; ?>"  />Yes&nbsp;<input type="radio" name="job_accepted_<?php echo $status; ?><?php echo $key; ?>" id="job_no_<?php echo $status; ?><?php echo $key; ?>"  />No</td>
+<td><textarea name="comments_<?php echo $status; ?><?php echo $key; ?>" id="comments_<?php echo $status; ?><?php echo $key; ?>" style="width:100px;"></textarea></td>
+</tr>
+</tbody>
+<?php endforeach; ?>
+<?php endif; ?>
+<?php if($count_request==0): ?>
+<tr><td style="text-align:center;"><span class="bold">No connections found</span></td></tr>
+<?php endif; ?>
+</table>              

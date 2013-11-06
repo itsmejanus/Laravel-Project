@@ -1,0 +1,893 @@
+<?php \Laravel\Section::start('content'); ?>
+<?php echo  HTML::style('css/jquery-ui.css') ; ?>
+<?php echo  HTML::script('js/jquery-1.9.1.js') ; ?>
+<?php echo  HTML::script('js/jquery-ui.js') ; ?>
+<style type="text/css">
+body {
+	margin:0px;
+	padding:0px;
+	font-family:Calibri;
+	font-size:12px;
+}
+
+img {
+	border:0px;
+}
+
+h1,h2,h3,h4,h5,h7,p,strong {
+	margin:0px;
+	padding:0px;
+	line-height:20px !important;
+}
+
+.Wrapper {
+	width:999px;
+	margin:0px auto;
+}
+
+.Header {
+	width:100%;
+	float:left;
+	margin:25px 0px 0px 0px;
+}
+
+.Logo {
+	width:auto;
+	float:left;
+	font-size:42px;
+	clear:both;
+}
+
+.Logo a{
+	color:#ED1921;
+	text-decoration:none;
+}
+
+.Logo a span{
+	color:#000000;
+}
+
+.Menu {
+	width:100%;
+	float:left;
+	margin:25px 0px 0px 0px;
+}
+
+.nav {
+	width:100%;
+	float:left;
+}
+
+.nav ul {
+	margin:0px;
+	padding:0px;
+}
+
+.nav li{
+	width:auto;
+	float:left;
+	font-size:15px;
+	list-style:none;
+	margin-right:50px;
+}
+
+.nav li a{
+	color:#000000;
+	text-decoration:none;
+}
+
+.nav li a img{
+	float:left;
+	margin:-5px 5px 0px 0px;
+}
+
+.nav li a:hover{
+	color:#ED1921;
+	text-decoration:none;
+}
+
+.nav li a.active{
+	color:#ED1921;
+	text-decoration:none;
+	font-family:"Courier New", Courier, monospace;
+}
+
+
+.Content {
+	width:100%;
+	float:left;
+	background:#DDE4EE;
+	padding:30px 0px 33px 0px;
+	margin:20px 0px 0px 0px;
+}
+
+.ContentHeading {
+	width:100%;
+	float:left;
+	font-size:18px;
+	color:#6DB0DB;
+}
+
+.ContentDataBlock {
+	width:997px;
+	float:left;
+	margin:20px 0px 0px 0px;
+	border:1px solid #9B9B9B;
+	font-size:14px;
+}
+
+.TableCalss1 {
+	font-size:19px;
+	color:#000000;
+	padding:5px 0px 5px 10px;
+	font-weight:bold;
+}
+
+.TableCalss2 {
+	font-size:15px;
+	color:#000000;
+	padding:4px 0px 4px 10px;
+	font-weight:bold;
+}
+
+.TableCalss3 {
+	color:#000000;
+	padding:6px 0px 6px 10px;
+}
+
+.TableCalss4 {
+	color:#569FCE;
+	padding:6px 0px 6px 10px;
+}
+
+.TableCalss4 a{
+	color:#569FCE;
+	text-decoration:underline;
+}
+
+.TableCalss4 a:hover{
+	color:#569FCE;
+	text-decoration:none;
+}
+
+.TableCalss5 {
+	color:#EC1A24;
+	padding:6px 0px 6px 10px;
+}
+
+.TableCalss5 a{
+	color:#EC1A24;
+	text-decoration:underline;
+}
+
+.TableCalss5 a:hover{
+	color:#EC1A24;
+	text-decoration:none;
+}
+
+
+.Footer {
+	width:100%;
+	float:left;
+	background:#64656A;
+	padding:50px 0px 25px 0px;
+	color:#A1A1A1;
+}
+
+.Footer a{
+	color:#A1A1A1;
+	text-decoration:none;
+	margin-left:13px;
+}
+
+.Footer a:hover{
+	color:#A1A1A1;
+	text-decoration:underline;
+}
+
+.Footerlink {
+	width:100%;
+	float:left;
+	margin:5px 0px 5px 0px;
+}
+
+.Footerlink a{
+	color:#ffffff;
+	text-decoration:none;
+	margin-right:10px;
+	margin-left:0px;
+}
+
+.Footerlink a:hover{
+	color:#ffffff;
+	text-decoration:underline;
+}
+.ContentPageData {
+	width:999px;
+	float:left;
+	margin:20px 0px 0px 0px;
+	font-size:14px;
+}
+
+.HospitalsPageLeft {
+	width:250px;
+	float:left;
+	margin:10px 0px 0px 0px;
+} 
+
+.TopProfileBlock {
+	width:100%;
+	float:left;
+}
+
+.Useriocn {
+	width:24px;
+	float:left;
+	padding:4px 4px 0px 4px;
+	border:1px solid #616161;
+}
+
+.UsericonInfo {
+	width:200px;
+	float:left;
+	margin:6px 0px 0px 10px;
+}
+
+.PageleftMenu {
+	width:100%;
+	float:left;
+	margin:30px 0px 0px 0px;
+}
+
+.PageleftMenu ul{
+	margin:0px;
+	padding:0px;
+}
+
+.PageleftMenu li{
+	width:100%;
+	float:left;
+	list-style:none;
+	margin:10px 0px 0px 0px;
+}
+
+.PageleftMenu li a{
+	color:#3E3E3E;
+	text-decoration:none;
+}
+
+.PageleftMenu li a:hover,.PageleftMenu li a.active{
+	color:#FF0000;
+	text-decoration:none;
+}
+
+.PageConetentRight {
+	width:728px;
+	float:right;
+	border:1px solid #4B4B4B;
+}
+
+.RightHead {
+	width:720px;
+	float:left;
+	background:#ffffff;
+	padding:4px 0px 4px 8px;
+	font-size:16px;
+}
+
+.RightContentInner {
+	width:698px;
+	float:left;
+	background:#CBD0D6;
+	padding:15px;
+}
+
+.Formdata {
+	width:320px;
+	float:left;
+	margin:15px 0px 0px 0px;
+}
+
+.Formdata p {
+	width:100%;
+	float:left;
+}
+
+.Formdata span{
+	width:100%;
+	float:left;
+	margin:7px 0px 0px 0px;
+}
+
+.TextFiledinner {
+	width:313px;
+	float:left;
+	background:#ffffff;
+	border:1px solid #A8A9AA;
+	height:22px;
+	line-height:22px;
+	padding-left:5px;
+	font-size:13px;
+}
+
+.FormDataRight {
+	float:right;
+}
+
+.FormDataRightA {
+	width:100%;
+}
+
+
+
+.FormDataRightB {
+	width:690px;
+}
+
+.FormDataRightC {
+	width:150px;
+}
+
+.FormDataRightD {
+	width:150px;
+	margin-right:9px;
+	float:right;
+}
+
+.FormDataRightE {
+	margin-left:29px;
+}
+
+.FormButton {
+	width:auto;
+	float:left;
+	background:#BAD9ED;
+	padding:5px 10px 5px 10px;
+	color:#454545;
+	font-size:14px;
+	cursor:pointer;
+	display:block;
+	border:1px solid #808080;
+}
+
+.FormButton:hover {
+	color:#FF0000;
+}
+
+.navmarginA {
+	float:right !important;
+	margin-right:0px !important;
+}
+
+.navmargin {
+	float:right !important;
+}
+
+.SearchFormTitle{
+	
+	width: 98%; text-align: center; font-weight: bold; height:35px; line-height:35px; font-family: Calibri; font-size: 8px;
+}
+
+.MainTable {
+	width:999px;
+	margin:0px auto;
+}
+
+
+.Maindata {
+	width:100%;
+	float:left;
+}
+
+.BlockMain {
+	width:190px;
+	float:left;
+}
+
+.Heading {
+	color:#272727;
+	font-size:12px;
+	float:left;
+	margin:0;
+	width:100%;
+	font-family:Calibri;
+}
+
+.DataBlock {
+	width:178px;
+	float:left;
+	border:1px solid #272727;
+	padding:5px;
+	height:80px;
+    overflow-y:auto;
+}
+
+.BlockStyle {
+	margin-left:12px;
+}
+
+.BlockStyleA {
+	float:right;
+}
+
+
+.ContentData {
+	width:322px;
+	float:left;
+}
+
+.DataBlock_new {
+	width:320px;
+	float:left;
+	border:1px solid #272727;
+}
+
+.ButtonDiv {
+	width:100%;
+	float:left;
+	margin-top:6px;
+}
+
+.Button {
+	width:auto;
+	float:left;
+	padding:4px 10px 4px 10px;
+	cursor:pointer;
+	border:1px solid #C3C3C3;
+	color:#272727;
+	font-size:11px;
+	background:#F0F0F0;
+}
+
+.Button:hover {
+	background:#CCCCCC;
+}
+</style>
+<script language="javascript">
+function get_email_content(email_div,email_id){
+	for(var i=1;i<5;i++){
+		if(email_id==i){
+			document.getElementById("sender"+email_div+"_td"+i).style.backgroundColor="#cccccc";
+		}
+		else{
+			document.getElementById("sender"+email_div+"_td"+i).style.backgroundColor="#ffffff";
+		}
+	}
+	$.ajax({
+    type: "POST",
+    url: 'emailcontent',
+    data: { email_id: email_id }
+}).done(function(msg) {
+	var obj=JSON.parse(msg);
+	document.getElementById("content_email"+email_div).style.display='block';
+	document.getElementById("content_email"+email_div).innerHTML=obj.email_content;
+});
+	
+}
+
+function open_popup(){
+$( "#dialog" ).dialog();
+document.getElementById("dialog").style.display="block";
+}
+
+function user_profile(user_id){
+	window.location.href="userprofile/"+user_id;
+}
+
+</script>
+<?php echo view('layouts.header')->with(get_defined_vars())->render(); ?>
+<div class="PageConetentRight" style="margin-bottom:5px;width:100%;float:left;" id="page_right">
+<div class="MainTable" style="width:95%;">
+   
+   <div class="Maindata" style="width:100%;margin-bottom:15px;">
+   
+    <div class="BlockMain" style="width:32%;border: 1px solid;">
+	 <h1 class="Heading" style="text-align:center;">Daily</h1>
+     <div style="width:25%;float:left;margin-left:5px;">
+     <p>Users: <?php echo $dailyData->userNumber; ?></p>
+     <p>Recruiters: <?php echo $dailyData->recruiterNumber; ?></p>
+     <p>Companies: <?php echo $dailyData->companyNumber; ?></p>
+     </div>
+     <div style="width:35%;float:left;">
+     <p>New Listings: <?php echo $dailyData->newListingNumber; ?></p>
+     <p>New Users: <?php echo $dailyData->newUserNumber; ?></p>
+     <p>New Recruiters: <?php echo $dailyData->newRecruiterNumber; ?></p>
+     <p>New Companies: <?php echo $dailyData->newCompanyNumber; ?></p>
+     </div>
+     <div style="width:38%;float:left;">
+     <p>User Visits: <?php echo $dailyData->userVisitNumber; ?></p>
+     <p>Position Filled: <?php echo $dailyData->positionFilledNumber; ?></p>
+     <p>Contract Requested: <?php echo $dailyData->contractRequestedNumber; ?></p>
+     <p>Married Contracts: <?php echo $dailyData->marriedContractNumber; ?></p>
+     </div>
+	</div>
+    
+	<div class="BlockMain" style="width:32%;border: 1px solid;">
+	 <h1 class="Heading" style="text-align:center;">Monthly</h1>
+     <div style="width:25%;float:left;margin-left:5px;">
+     <p>Users: <?php echo $dailyData->userNumber; ?></p>
+     <p>Recruiters: <?php echo $dailyData->recruiterNumber; ?></p>
+     <p>Companies: <?php echo $dailyData->companyNumber; ?></p>
+     </div>
+     <div style="width:35%;float:left;">
+     <p>New Listings: <?php echo $dailyData->newListingNumber; ?></p>
+     <p>New Users: <?php echo $dailyData->newUserNumber; ?></p>
+     <p>New Recruiters: <?php echo $dailyData->newRecruiterNumber; ?></p>
+     <p>New Companies: <?php echo $dailyData->newCompanyNumber; ?></p>
+     </div>
+     <div style="width:38%;float:left;">
+     <p>User Visits: <?php echo $dailyData->userVisitNumber; ?></p>
+     <p>Position Filled: <?php echo $dailyData->positionFilledNumber; ?></p>
+     <p>Contract Requested: <?php echo $dailyData->contractRequestedNumber; ?></p>
+     <p>Married Contracts: <?php echo $dailyData->marriedContractNumber; ?></p>
+     </div>
+	</div>
+	
+	
+	<div class="BlockMain" style="width:32%;border: 1px solid;">
+	 <h1 class="Heading" style="text-align:center;">Total</h1>
+     <div style="width:25%;float:left;margin-left:5px;">
+     <p>Users: <?php echo $dailyData->userNumber; ?></p>
+     <p>Recruiters: <?php echo $dailyData->recruiterNumber; ?></p>
+     <p>Companies: <?php echo $dailyData->companyNumber; ?></p>
+     </div>
+     <div style="width:35%;float:left;">
+     <p>New Listings: <?php echo $dailyData->newListingNumber; ?></p>
+     <p>New Users: <?php echo $dailyData->newUserNumber; ?></p>
+     <p>New Recruiters: <?php echo $dailyData->newRecruiterNumber; ?></p>
+     <p>New Companies: <?php echo $dailyData->newCompanyNumber; ?></p>
+     </div>
+     <div style="width:38%;float:left;">
+     <p>User Visits: <?php echo $dailyData->userVisitNumber; ?></p>
+     <p>Position Filled: <?php echo $dailyData->positionFilledNumber; ?></p>
+     <p>Contract Requested: <?php echo $dailyData->contractRequestedNumber; ?></p>
+      <p>Married Contracts: <?php echo $dailyData->marriedContractNumber; ?></p>
+     </div>
+	</div>
+   </div>
+   
+   
+   <div class="Maindata" style="margin-top:0px;margin-bottom:15px;">
+   
+    <div class="BlockMain">
+	 <h1 class="Heading">New Companies</h1>
+	  <div class="DataBlock">
+      <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+    
+    <div class="BlockMain BlockStyle">
+	 <h1 class="Heading">New Referrals</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+    
+	<div class="BlockMain BlockStyle">
+	 <h1 class="Heading">New Recruiters</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+    
+    <div class="BlockMain BlockStyle">
+	 <h1 class="Heading">New Advertisers</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+	
+	<div class="BlockMain BlockStyle">
+	 <h1 class="Heading">New Users</h1>
+	  <div class="DataBlock">
+	  <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+    
+    <div class="BlockMain">
+	 <h1 class="Heading">Daily Companies</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+	
+	<div class="BlockMain BlockStyle">
+	 <h1 class="Heading">Daily Referrals</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+    
+    <div class="BlockMain BlockStyle">
+	 <h1 class="Heading">Daily Recruiters</h1>
+	  <div class="DataBlock">
+	  <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+	
+	<div class="BlockMain BlockStyle">
+	 <h1 class="Heading">Daily Advertisers</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+	
+	<div class="BlockMain BlockStyle">
+	 <h1 class="Heading">Daily Users</h1>
+	  <div class="DataBlock">
+	   <?php foreach ($newCompanyList as $company): ?>
+	  <p><a href="#" style="cursor:pointer;color:#424344;" onclick="user_profile('<?php echo $company->id; ?>')"><?php echo $company->name; ?></a></p>
+      <?php endforeach; ?>
+	  </div>
+	</div>
+	
+   </div>
+   
+   
+   <div class="Maindata" style="margin-top:0px;margin-bottom:15px;">
+   
+    <div class="ContentData">
+	 <h1 class="Heading">Email Associate1@MyJobSearch.com</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td width="107" style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;font-weight:bold;">Sender</td>
+         <td width="213" height="22" style="padding-left:5px; border-bottom:1px solid #272727;font-weight:bold;">Email content</td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%">
+          <?php $count1=1;?>
+          <?php foreach($EmailAssociate1 as $email): ?>
+          <tr>
+          <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" onclick="get_email_content('1','<?php echo $count1;?>')" id="sender1_td<?php echo $count1;?>"><?php echo $email->senderName; ?></td>
+          </tr>
+          <?php $count1++;?>
+          <?php endforeach; ?>
+          </table>
+          </td>
+          <td style="padding-left:5px;">
+          <div id="content_email1" style="height:90px;overflow-y:auto;display:none;"> 
+          </div>
+          </td>
+        </tr>
+       </table>
+
+	  </div>
+	 <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+	</div>
+    
+	
+	
+	<div class="ContentData BlockStyle">
+	 <h1 class="Heading">Email Associate2@MyJobSearch.com</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td width="107" style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;font-weight:bold;">Sender</td>
+         <td width="213" height="22" style="padding-left:5px; border-bottom:1px solid #272727;font-weight:bold;">Email content</td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%">
+          <?php $count2=1;?>
+          <?php foreach($EmailAssociate2 as $email): ?>
+          <tr>
+          <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" onclick="get_email_content('2','<?php echo $count2;?>')" id="sender2_td<?php echo $count2;?>"><?php echo $email->senderName; ?></td>
+          </tr>
+          <?php $count2++;?>
+          <?php endforeach; ?>
+          </table>
+          </td>
+          <td style="padding-left:5px;">
+          <div id="content_email2" style="height:90px;overflow-y:auto;display:none;">
+          </div>
+          </td>
+        </tr>
+       </table>
+
+	  </div>
+	 <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+	</div>
+	
+	
+	<div class="ContentData BlockStyle">
+	 <h1 class="Heading">Email Associate3@MyJobSearch.com</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td width="107" style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;font-weight:bold;">Sender</td>
+         <td width="213" height="22" style="padding-left:5px; border-bottom:1px solid #272727;font-weight:bold;">Email content</td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%">
+           <?php $count3=1;?>
+          <?php foreach($EmailAssociate3 as $email): ?>
+          <tr>
+          <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" onclick="get_email_content('3','<?php echo $count3;?>')" id="sender3_td<?php echo $count3;?>"><?php echo $email->senderName; ?></td>
+          </tr>
+           <?php $count3++;?>
+          <?php endforeach; ?>
+          </table>
+          </td>
+          <td style="padding-left:5px;">
+          <div id="content_email3" style="height:90px;overflow-y:auto;display:none;">
+          
+          </div>
+          </td>
+        </tr>
+       </table>
+
+	  </div>
+	 <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+	</div>
+	
+	 <div class="ContentData">
+	 <h1 class="Heading">Email Associate4@MyJobSearch.com</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td width="107" style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;font-weight:bold;">Sender</td>
+         <td width="213" height="22" style="padding-left:5px; border-bottom:1px solid #272727;font-weight:bold;">Email content</td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%">
+          <?php $count4=1;?>
+          <?php foreach($EmailAssociate4 as $email): ?>
+          <tr>
+          <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" onclick="get_email_content('4','<?php echo $count4;?>')" id="sender4_td<?php echo $count4;?>"><?php echo $email->senderName; ?></td>
+          </tr>
+          <?php $count4++;?>
+          <?php endforeach; ?>
+          </table>
+          </td>
+          <td style="padding-left:5px;">
+          <div id="content_email4" style="height:90px;overflow-y:auto;display:none;">
+          
+          </div>
+          </td>
+        </tr>
+       </table>
+
+	  </div>
+	 <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+	</div>
+    
+	
+	
+	<div class="ContentData BlockStyle">
+	 <h1 class="Heading">Email Associate5@MyJobSearch.com</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td width="107" style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;font-weight:bold;">Sender</td>
+         <td width="213" height="22" style="padding-left:5px; border-bottom:1px solid #272727;font-weight:bold;">Email content</td>
+        </tr>
+        <tr>
+          <td>
+          <table width="100%">
+          <?php $count5=1;?>
+          <?php foreach($EmailAssociate5 as $email): ?>
+          <tr>
+          <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" onclick="get_email_content('5','<?php echo $count5;?>')" id="sender5_td<?php echo $count5;?>"><?php echo $email->senderName; ?></td>
+          </tr>
+          <?php $count5++;?>
+          <?php endforeach; ?>
+          </table>
+          </td>
+          <td style="padding-left:5px;">
+          <div id="content_email5" style="height:90px;overflow-y:auto;display:none;">
+          
+          </div>
+          </td>
+        </tr>
+       </table>
+
+	  </div>
+	 <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+	</div>
+	
+	
+	<div class="ContentData BlockStyle">
+	 <h1 class="Heading">Email Associate6@MyJobSearch.com</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td width="107" style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;font-weight:bold;">Sender</td>
+         <td width="213" height="22" style="padding-left:5px; border-bottom:1px solid #272727;font-weight:bold;">Email content</td>
+        </tr>
+       <tr>
+          <td>
+          <table width="100%">
+          <?php $count6=1;?>
+          <?php foreach($EmailAssociate6 as $email): ?>
+          <tr>
+          <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" onclick="get_email_content('6','<?php echo $count6;?>')" id="sender6_td<?php echo $count6;?>"><?php echo $email->senderName; ?></td>
+          </tr>
+          <?php $count6++;?>
+          <?php endforeach; ?>
+          </table>
+          </td>
+          <td style="padding-left:5px;">
+          <div id="content_email6" style="height:90px;overflow-y:auto;display:none;">
+          
+          </div>
+          </td>
+        </tr>
+       </table>
+
+	  </div>
+	 <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+	</div>
+	
+	
+   </div>
+   
+   
+   <div class="Maindata" style="margin-top:0px;margin-bottom:15px;">
+   
+    <div class="ContentData">
+	 <h1 class="Heading">Comment</h1>
+	  <div class="DataBlock_new">
+	   <table width="320" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+   <td width="100%" style="padding-left:5px;border-bottom:1px solid #272727;border-right:1px solid #272727;font-weight:bold;">Enter new comment on the first line</td>
+        </tr>
+        <tr>
+        <td style="border-bottom:1px solid #272727;border-right:1px solid #272727;">
+        <textarea rows="1" name="comment" id="comment" style="width:306px; margin-bottom:0; border-radius:0px;"></textarea>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <div style="height:100px;overflow-y:auto;">
+        <table width="100%">
+        <?php foreach($commmentList as $comment): ?>
+          <tr>
+     <td style="padding-left:5px; border-bottom:1px solid #272727; border-right:1px solid #272727;" id="<?php echo $email->emailID; ?>"><?php echo $comment->Comment; ?> <?php echo $comment->timeStamp; ?></td>
+          </tr>
+          <?php endforeach; ?>
+        </table>
+        </div>
+        </td>
+        </tr>
+       </table>
+
+	  </div>
+	</div>
+    
+   </div>
+   
+   <div id="dialog" title="Reply to Email" style="display:none;">
+   <div style="width:100%;float:left;">
+   <textarea rows="10" name="comment" id="comment" style="width:96%; margin-bottom:0; border-radius:0px;"></textarea>
+   </div>
+   <div class="ButtonDiv"><input name="" type="button" value="Reply"  class="Button" onclick="open_popup()"/></div>
+   </div>
+   
+  
+  </div>
+<?php echo view('layouts.footer')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+                    
+<?php echo view('layouts.public')->with(get_defined_vars())->render(); ?>

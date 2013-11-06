@@ -1,0 +1,261 @@
+
+<?php \Laravel\Section::start('content'); ?>
+<style type="text/css">
+.Button {
+	width:auto;
+	float:left;
+	padding:4px 10px 4px 10px;
+	cursor:pointer;
+	border:1px solid #C3C3C3;
+	color:#272727;
+	font-size:11px;
+	background:#F0F0F0;
+	margin-left: 5px;
+}
+
+.Button:hover {
+	background:#CCCCCC;
+}
+</style>
+<script language="javascript">
+function fill_fields(key,job_id,total_count){
+	
+	for(var i=0;i<total_count;i++){
+		if(key==i){
+			document.getElementById("row"+i).style.backgroundColor="#cccccc";
+		}
+		else{
+			document.getElementById("row"+i).style.backgroundColor="#ffffff";
+		}
+	}
+	document.getElementById("job_id").value=job_id;
+	$.ajax({
+    type: "POST",
+    url: 'jobdata',
+    data: {job_id:job_id }
+	}).done(function(msg) {
+		var obj=JSON.parse(msg);
+		document.getElementById("hosp_name").innerHTML=obj.hospital_name;
+		document.getElementById("hosp_location").innerHTML=obj.location;
+		document.getElementById("about_hospital").value=obj.cpara;
+		document.getElementById("about_area").value=obj.lpara;
+		document.getElementById("rewrite_hospital").value=obj.cpara_clean;
+		document.getElementById("rewrite_area").value=obj.lpara_clean;
+	});
+	
+	
+}
+
+function clear_fields(){
+	document.getElementById("rewrite_hospital").value='';
+	document.getElementById("rewrite_area").value='';
+}
+
+function save_fields(){
+	var about_hospital=document.getElementById("rewrite_hospital").value;
+	var about_area=document.getElementById("rewrite_area").value;
+	var job_id=document.getElementById("job_id").value;
+	
+	$.ajax({
+    type: "POST",
+    url: 'savejobdata',
+    data: {about_hospital:about_hospital,about_area:about_area,job_id:job_id }
+	}).done(function(msg) {
+		var obj=JSON.parse(msg);
+		document.getElementById("about_hospital").value=obj.cpara;
+		document.getElementById("about_area").value=obj.lpara;
+	});
+}
+</script>
+<input type="hidden" name="job_id" id="job_id" />
+<div class="hero-unit-login"> 
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class ="container">
+    <div id="left_columns" style="width:33%;float:left;border:1px solid #ccc;height:450px;overflow:auto;">
+    <table style="width:100%;"> 
+    <?php foreach($hospital_list as $key => $hospital): ?>
+    <tr id="row<?php echo $key; ?>" onclick="fill_fields('<?php echo $key; ?>','<?php echo $hospital->jobid; ?>','<?php echo $hospital_count; ?>')">
+    <td><?php echo $hospital->hname; ?></td>
+    </tr>
+    <?php endforeach; ?>
+    </table>
+    </div>
+    <div id="center_columns" style="width:33%;float:left;border:1px solid #ccc;height:450px;overflow:auto;">
+    <table style="width:100%;">
+    <tr>
+    <td>Hospital Name: <span id="hosp_name"></span></td>
+    </tr>
+    <tr>
+    <td>Hospital Location: <span id="hosp_location"></span></td>
+    </tr>
+    <tr>
+    <td style="font-weight:bold;">About The Hospital</td>
+    </tr>
+    <tr>
+    <td><textarea style="width:95%;height:150px;" name="about_hospital" id="about_hospital" readonly="readonly"></textarea></td>
+    </tr>
+    <tr>
+    <td style="font-weight:bold;">About The Area</td>
+    </tr>
+    <tr>
+    <td><textarea style="width:95%;height:150px;" name="about_area" id="about_area" readonly="readonly"></textarea></td>
+    </tr>
+    </table>
+    </div>
+    <div id="right_columns" style="width:33%;float:left;border:1px solid #ccc;height:450px;overflow:auto;">
+    <table style="width:100%;">
+    <tr>
+    <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td style="font-weight:bold;">Rewrite the hospital</td>
+    </tr>
+    <tr>
+    <td><textarea style="width:95%;height:150px;" name="rewrite_hospital" id="rewrite_hospital"></textarea></td>
+    </tr>
+    <tr>
+    <td style="font-weight:bold;">Rewrite the area</td>
+    </tr>
+    <tr>
+    <td><textarea style="width:95%;height:150px;" name="rewrite_area" id="rewrite_area"></textarea></td>
+    </tr>
+    <tr>
+    <td>
+    <div style="float:right;">
+    <span>
+    <input name="" type="button" value="Clear"  class="Button" onclick="clear_fields()"/>
+    </span>
+    <span>
+    <input name="" type="button" value="Submit"  class="Button" onclick="save_fields()"/>
+    </span>
+    </div>
+    </td>
+    </tr>
+    </table>
+    </div>
+    </div>
+  </div>
+    <p>&nbsp;</p>
+  <div id="footer">
+    <div class="container">
+      <ul class="masthead-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="footer-links">
+        <li>© 2013, Yi Medical, Inc. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Privacy Policy</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Partners</a></li>
+      </ul>
+    </div>
+  </div>
+
+<?php \Laravel\Section::stop(); ?>
+
+<?php \Laravel\Section::start('scripts'); ?>
+<style type="text/css">
+0 	  /* Set the fixed height of the footer here */
+ #push, #footer {
+ height: 100px;
+}
+#footer {
+	padding: 10px 0px 10px 20px;
+	background-color: #63656a;
+}
+/* Textual links in masthead */
+.masthead-links {
+	margin: 0;
+	list-style: none;
+	color: #ffffff;
+}
+.masthead-links li {
+	display: inline;
+	padding: 10px 20px 10px 0px;
+}
+.masthead-links li a {
+	color: #ffffff;
+}
+.masthead-links li a:hover {
+	color: #ffffff;
+}
+.footer-links {
+	margin: 0;
+	list-style: none;
+	color: #99999a;
+	padding-top: 10px;
+}
+.footer-links li {
+	display: inline;
+	padding: 10px 20px 10px 0px;
+	color: #99999a;
+}
+.footer-links li a {
+	color: #99999a;
+}
+.footer-links li a:hover, .footer-links li a:focus {
+	color: #99999a;
+}
+.profilename {
+	padding: 20px 20px 20px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+}
+.profile img {
+	padding: 0px;
+}
+
+.profilename2 {
+	padding: 20px 20px 0px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #73b3dc;
+}
+.profiletab {
+	padding: 10px 20px 10px 20px;
+	font-size: 12px;
+	color: #000000;
+}
+.currentprofiletab {
+	padding: 10px 20px 10px 20px;
+	font-size: 12px;
+	color: #ff0000;
+}
+.mile {
+	padding: 20px 20px 0px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #ff0000;
+}
+.table {
+	width: 100%;
+	margin-top: 30px;
+}
+.interest {
+	font-size: 9px;
+	color: #000000;
+}
+.interest-pad {
+	padding: 0 20px 0px 20px;
+}
+
+
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+#footer {
+	margin-left: -20px;
+	margin-right: -20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+}
+</style>
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.physician_master')->with(get_defined_vars())->render(); ?> 

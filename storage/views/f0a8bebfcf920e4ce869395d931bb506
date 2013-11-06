@@ -1,0 +1,45 @@
+ <?php if($Record>0): ?>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #ccc; ">
+  <tr>
+    <td width="12%" class="TableCalss2">Hospital Name</td>
+    <td width="12%" class="TableCalss2">Title of Position</td>
+    <td width="12%" class="TableCalss2">Date Posted</td>
+    <td width="12%" class="TableCalss2">Contact Name</td>
+    <td width="12%" class="TableCalss2">Contact Email</td>
+    <td width="12%" class="TableCalss2">Contact Phone</td>
+    <td width="12%" class="TableCalss2">Contact Company</td>
+    <td width="12%" class="TableCalss2">Contact Association</td>
+  </tr>
+   <?php foreach ($userUpdate as $key=>$hospital): ?>
+  <?php if($fno!=""): ?>
+  <tr id="row_<?php echo $key; ?>">
+    <td class="TableCalss4"><a href="javascript:void(0)"><?php echo  $hospital-> name; ?></a></td>
+    <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;">click to add</a></td>
+   <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;">click to add</a></td>
+   <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;" onclick="open_popup()">click to add</a></td>
+   <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;" onclick="open_popup()">click to add</a></td>
+   <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;" onclick="open_popup()">click to add</a></td>
+   <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;" onclick="open_popup()">click to add</a></td>
+   <td class="TableCalss3"><a href="javascript:void(0)" style="color:#666;" onclick="open_popup()">click to add</a></td>
+    
+  </tr>
+  <?php endif; ?>
+  <?php if($fno==""): ?>
+  <tr id="row_<?php echo $key; ?>">
+    <td class="TableCalss4"><a href="javascript:void(0)" onclick="show_editables('<?php echo  $hospital-> jobid; ?>')"><?php echo  $hospital-> name; ?></a></td>
+    <td class="TableCalss3"><?php echo  $hospital-> position; ?> </td>
+   <td class="TableCalss3"><?php echo  $hospital-> date_posted; ?> </td>
+   <td class="TableCalss3"><?php echo  $hospital-> contact_name; ?> </td>
+   <td class="TableCalss3"><?php echo  $hospital-> contact_email; ?> </td>
+   <td class="TableCalss3"><?php echo  $hospital-> contact_phone; ?> </td>
+   <td class="TableCalss3">Teamhealth</td>
+   <td class="TableCalss3">Potential</td>
+    
+  </tr>
+  <?php endif; ?>
+  <?php endforeach; ?>
+  </table>
+  <?php endif; ?>
+  <?php if($Record==0): ?>
+  <div  style="width:100%;height:500px; text-align:center;">No Hospital Found</div>
+  <?php endif; ?>

@@ -1,0 +1,282 @@
+@layout('layouts.public')
+@section('content')
+<style type="text/css">
+body {
+	margin:0px;
+	padding:0px;
+	font-family:Calibri;
+	font-size:12px;
+}
+
+img {
+	border:0px;
+}
+
+h1,h2,h3,h4,h5,h7,p,strong {
+	margin:0px;
+	padding:0px;
+}
+
+.Wrapper {
+	width:999px;
+	margin:0px auto;
+}
+
+.Header {
+	width:100%;
+	float:left;
+	margin:25px 0px 0px 0px;
+}
+
+.Logo {
+	width:auto;
+	float:left;
+	font-size:42px;
+	clear:both;
+}
+
+.Logo a{
+	color:#ED1921;
+	text-decoration:none;
+}
+
+.Logo a span{
+	color:#000000;
+}
+
+.Menu {
+	width:100%;
+	float:left;
+	margin:25px 0px 0px 0px;
+}
+
+.nav {
+	width:100%;
+	float:left;
+}
+
+.nav ul {
+	margin:0px;
+	padding:0px;
+}
+
+.nav li{
+	width:auto;
+	float:left;
+	font-size:15px;
+	list-style:none;
+	margin-right:50px;
+}
+
+.nav li a{
+	color:#000000;
+	text-decoration:none;
+}
+
+.nav li a img{
+	float:left;
+	margin:-5px 5px 0px 0px;
+}
+
+.nav li a:hover{
+	color:#ED1921;
+	text-decoration:none;
+}
+
+.nav li a.active{
+	color:#ED1921;
+	text-decoration:none;
+	font-family:"Courier New", Courier, monospace;
+}
+
+.Footer {
+	width:100%;
+	float:left;
+	background:#64656A;
+	padding:50px 0px 25px 0px;
+	color:#A1A1A1;
+}
+
+.Footer a{
+	color:#A1A1A1;
+	text-decoration:none;
+	margin-left:13px;
+}
+
+.Footer a:hover{
+	color:#A1A1A1;
+	text-decoration:underline;
+}
+
+.Footerlink {
+	width:100%;
+	float:left;
+	margin:5px 0px 5px 0px;
+}
+
+.Footerlink a{
+	color:#ffffff;
+	text-decoration:none;
+	margin-right:10px;
+	margin-left:0px;
+}
+
+.Footerlink a:hover{
+	color:#ffffff;
+	text-decoration:underline;
+}
+
+.MianContent {
+	width:999px;
+	margin:0px auto;
+}
+.TextFieldAdmin {
+	width:99%;
+	float:left;
+	border:1px solid #cccccc;
+	height:24px;
+	line-height:24px;
+}
+
+.ButtonAdmin {
+	width:80px;
+	float:left;
+	border:1px solid #cccccc;
+	height:22px;
+	text-align:center;
+	background:#cccccc;
+	cursor:pointer;
+	text-align:center;
+	font-size:12px;
+	font-family:Calibri;
+}
+
+.ButtonAdmin:hover {
+	border:1px solid #353535;
+}
+
+.Siginpage {
+	width:100%;
+	float:left;
+	border:1px solid #3C8C28;
+	padding:10px;
+}
+
+.Signinheading {
+	width:100%;
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.Signinsocial {
+	width:auto;
+	float:right;
+	font-size:11px;
+}
+
+.Signinsocial img {
+	width:22px;
+	height:22px;
+	float:left;
+	margin-left:4px;
+}
+
+.Sigindata {
+	width:100%;
+	float:left;
+	margin:10px 0px 0px 0px;
+}
+
+.ButtonSignin {
+	width:80px;
+	float:left;
+	border:1px solid #ffffff;
+	height:22px;
+	text-align:center;
+	background:#519B3E;
+	cursor:pointer;
+	text-align:center;
+	font-size:12px;
+	font-family:Calibri;
+	color:#ffffff;
+}
+
+.ButtonSignin:hover {
+	background:#3C8C28;
+}
+
+</style>
+@include('layouts.header')
+
+<div class="MianContent">
+
+<div class="Siginpage">
+	 <div class="Signinheading">
+	  <span style="float:left;">Sign In</span>
+      <span style="float:left;">{{$message}}</span>
+	  <div class="Signinsocial">
+	   <span style="float:left; margin-top:4px;">Sign In with :</span> 
+	   <img src="images/facebook.png" />
+	   <img src="images/linkdin.png" />
+	   <img src="images/gtakl.png" />
+	  </div>
+	 </div>
+	<form id="login-form" class="form-horizontal" method="POST" accept-char="UTF-8">
+<input type="hidden" name="csrf_token" value="UqRCyPsfczdZlBADdWyeC1SJs9wZjhtLIeaTk4SV">
+	 <div class="Sigindata">
+	  <span style="float:left; width:100%;">Enter Email</span>
+	  <span style="float:left; width:78%; margin-top:5px;"><input type="email" name="email" id="email" value="" placeholder="Email" class="TextFieldAdmin" required /></span>
+	 </div>
+	 
+	 <div class="Sigindata">
+	  <span style="float:left; width:100%;">Password</span>
+	  <span style="float:left; width:78%; margin-top:5px;"><input type="password" name="password" id="password" placeholder="Password" class="TextFieldAdmin" required/></span>
+	  <span style="float:left; margin:10px 0 0 10px;">
+      <a href="reset">Forgot</a>
+      </span>
+	 </div>
+	 
+	 <div class="Sigindata">
+	  <span style="float:left; width:100%;">
+	   <span style="float:left;"><input name="" type="checkbox" value="" /> </span>
+	   <span style="float:left; margin:3px 0px 0px 5px;"> Keep me signed in for 2 weeks</span>
+	  </span>
+	 </div>
+	 
+	 <div class="Sigindata">
+	  <span style="float:left; width:100%;">
+	   <input name="" type="submit" value="Sign In" class="ButtonSignin" />
+	  </span>
+	 </div>
+	 
+	 </form>
+     <form action="signup" method="get" name="signup_form"> 
+	 <div class="Sigindata">
+	  <div class="Signinheading">Create An Account</div>
+	 </div>
+	 
+	 <div class="Sigindata">
+	  <span style="float:left; width:100%;">
+	   <span style="float:left;"><input name="" type="radio" value="" /> </span>
+	   <span style="float:left; margin:3px 0px 0px 5px;"> I m a Recruiter</span>
+	   <span style="float:left; margin-left:6px;"><input name="" type="radio" value="" /> </span>
+	   <span style="float:left; margin:3px 0px 0px 5px;"> I m a Physician</span>
+	  </span>
+	 </div>
+	 
+	 <div class="Sigindata">
+	  <input name="" type="button" class="ButtonAdmin" value="Continue" onclick="document.signup_form.submit()"/>
+	  
+	  <div class="Signinsocial">
+	   <span style="float:left; margin-top:4px;">Sign Up with :</span> 
+	   <img src="images/facebook.png" />
+	   <img src="images/linkdin.png" />
+	   <img src="images/gtakl.png" />
+	  </div>
+	  
+	 </div>
+     </form>
+	</div>    
+</div>
+@endsection

@@ -1,0 +1,31 @@
+<table>
+<tbody width="100%">
+<tr>
+<td class="span120 bold">Physician</td>
+<td class="span120 bold">Hospital</td>
+<td class="span100 bold">Message</td>
+<td class="span100 bold">Documents on File</td>
+<td class="span30 bold">&nbsp;</td>
+<td class="span30 bold">&nbsp;</td>
+</tr>
+</tbody>
+<?php foreach($connectedDocs as $key=>$docs): ?>
+<tbody>
+<tr>
+<td><?php echo $docs->docname; ?></td>
+<td class="redunderline"><?php echo $docs->hospname; ?></td>
+<td><?php echo $docs->msg_count; ?></td>
+<td>
+<?php if($docs->doc_release==0): ?>
+Request
+<?php endif; ?>
+<?php if($docs->doc_release==2): ?>
+Yes
+<?php endif; ?>
+</td>
+<td><img src="img/recruiter/email.png" alt="email icon"></td>
+<td><img src="img/recruiter/trash.png" alt="trash icon"></td>
+</tr>
+</tbody>
+<?php endforeach; ?>
+</table>

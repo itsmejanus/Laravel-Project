@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+<?php echo  HTML::style('css/bootstrap.css') ; ?>
+<?php echo  HTML::style('css/bootstrap-responsive.css') ; ?>
+<?php echo  HTML::style('css/css.css') ; ?>
+</head>
+<body>
+
+        <div class="container">
+          <?php if (!(Sentry::check())): ?>
+          <form action="login" class="navbar-form pull-right" id="login-form" method="POST" accept-char="UTF-8">
+            e-mail <input type="email" class="span2" name="email" id="email" value="" placeholder="Email" required>
+            password <input class="" type="password" name="password" id="password" placeholder="Password" required>
+            <button class="btn btn-link" type="submit">log-in</button> | sign-up
+          </form>
+          <?php else: ?>
+          <?php echo  HTML::link('logout', 'logout', array('class'=>'pull-right')); ?>
+          <?php endif; ?>
+        </div>
+        <?php echo \Laravel\Section::yield('content'); ?>
+
+  </body></html>

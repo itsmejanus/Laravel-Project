@@ -1,0 +1,17 @@
+<table>
+<tbody>
+<tbody width="100%">
+<tr>
+<td class="span160 bold">Physician</td>
+<td class="span160 bold">Hospital</td>
+</tr>
+</tbody>
+<?php foreach($connection_request as $key=>$con): ?>
+<tbody>
+<tr>
+<td><?php echo $con["recruiter_name"]; ?></td>
+<td><?php echo $con["hospital_name"]; ?></td>
+</tr>
+</tbody>
+<?php endforeach; ?>  
+</table>

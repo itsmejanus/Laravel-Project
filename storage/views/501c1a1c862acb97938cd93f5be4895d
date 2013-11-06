@@ -1,0 +1,16 @@
+<table>
+<?php foreach($messages as $key=>$msg): ?>
+<tbody>
+<tr>
+<td><img src="img/recruiter/message_profile_thumb.gif" alt="Profile image"></td>
+<td class="span4" style="vertical-align:top;">
+<div class="messageb">Message From <?php echo $msg->from; ?></div>
+<div class="message"><?php echo $msg->message; ?></div>
+</td>
+<td class="span4" style="vertical-align:top;">
+<div class="messageb"><?php echo $msg->subject; ?></div>
+</td>
+</tr>
+</tbody>
+<?php endforeach; ?>
+</table>

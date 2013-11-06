@@ -1,0 +1,361 @@
+@layout('layouts.physician_master') 
+
+@section('content')
+<script language="javascript">
+function load_messages(){
+	
+        $.ajax({
+             type: "POST",
+             url: "newmessages",
+             data: {},
+             success: function(msg) {
+				 document.getElementById("new_messages").innerHTML=msg;
+             }
+       });
+}
+function load_connectedphyscians(){
+	
+        $.ajax({
+             type: "POST",
+             url: "connectedphyscians",
+             data: {},
+             success: function(msg) {
+				 document.getElementById("connected_physicians").innerHTML=msg;
+             }
+       });
+}
+
+function load_faveddocs(){
+	
+        $.ajax({
+             type: "POST",
+             url: "faveddocs",
+             data: {},
+             success: function(msg) {
+				 document.getElementById("faved_docs").innerHTML=msg;
+             }
+       });
+}
+
+function load_docsnearhome(){
+	
+        $.ajax({
+             type: "POST",
+             url: "docsnearhome",
+             data: {},
+             success: function(msg) {
+				 document.getElementById("near_home").innerHTML=msg;
+             }
+       });
+}
+
+function load_docsdesired(){
+	
+        $.ajax({
+             type: "POST",
+             url: "docsdesired",
+             data: {},
+             success: function(msg) {
+				 document.getElementById("near_home").innerHTML=msg;
+             }
+       });
+}
+
+function load_docsvisited(){
+	
+        $.ajax({
+             type: "POST",
+             url: "docsvisited",
+             data: {},
+             success: function(msg) {
+				 document.getElementById("visited_docs").innerHTML=msg;
+             }
+       });
+}
+
+function load_connections(comm_status,div_id){
+	
+        $.ajax({
+             type: "POST",
+             url: "requestconnection",
+             data: {comm_status:comm_status},
+             success: function(msg) {
+				 document.getElementById(div_id).innerHTML=msg;
+             }
+       });
+}
+
+function connect_physician(doc_id){
+	 $.ajax({
+             type: "POST",
+             url: "connectphysician",
+             data: {doc_id:doc_id},
+             success: function(msg) {
+				 load_connectedphyscians();
+             }
+       });
+}
+
+function view_all_messages(){
+	window.location.href="allmessages";
+}
+
+
+load_messages();
+load_connectedphyscians();
+load_docsnearhome();
+load_faveddocs();
+load_docsvisited();
+load_connections(0,'pending_request');
+</script>
+<div class="hero-unit-login"> 
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class ="container">
+    <div class="span12">
+    <div class="span650 pull-left">
+      <p><span class="profilename2">Hello Lisa Reynolds</span> <span class="nav100 recent">Last log-in 08/01/13 5:00pm</span></p></div>
+    <div class="form-pad2 span250 pull-right"><p>&nbsp;</p></div> </div>
+      <div class="span12">
+        <div class="span600 pull-left">
+        	
+            
+           <div class="form-pad2">
+            <div class="bs-table-scrollable">
+                
+                
+                <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td><span class="bold">New Messages</span> <div class="pull-right redunderline" onclick="view_all_messages()">View all of my messages</div></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <div id="new_messages">
+                
+                </div>
+                </td>
+                </tr>
+                </tbody>
+                </table>
+                        
+                        
+                <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td><span class="bold pull-left">New Connected Physicians</span>
+                  <div class="pull-right redunderline">View All</div></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <div id="connected_physicians">
+                
+                </div>
+               </td>
+               </tr>
+                          
+               </table>
+                        
+                <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td><span class="bold pull-left">Physicians Located Near My Hospitals</span></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <div id="near_home" style="max-height:280px;height:auto;overflow-y:auto;">
+                
+                </div>
+               </td>
+                  </tr>
+                          
+                        </table>
+                        
+                        <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td><span class="bold pull-left">Physicians Who Liked My Hospitals</span></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <div id="faved_docs" style="max-height:280px;height:auto;overflow-y:auto;">
+                
+                </div>
+               </td>
+                  </tr>
+                          
+                        </table>
+            </div>
+                    
+             
+         </div>            
+       
+      </div>
+      <div class="form-pad2">
+      	<div class="span320 pull-right">
+            <div class="bs-table-scrollable">
+                <table class="table table-bordered table-striped bs-table">
+                <thead>
+                <tr>
+                <td><span class="bold">Pending Connection Requests</span> <div class="pull-right redunderline">View All</div></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <div id="pending_request" style="max-height:280px;height:auto;overflow-y:auto;">
+                
+                </div>
+                
+                </td>
+                  </tr>
+                  </tbody>
+              </table>
+              
+              <table class="table table-bordered table-striped bs-table">
+                <thead>
+                <tr>
+                <td><span class="bold">Physicians Who Visited My Hospital</span> </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <div id="visited_docs" style="max-height:280px;height:auto;overflow-y:auto;">
+                
+                </div>
+                </td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+        </div></div>
+    </div>
+  </div>
+    <p>&nbsp;</p>
+  <div id="footer">
+    <div class="container">
+      <ul class="masthead-links">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="footer-links">
+        <li>© 2013, Yi Medical, Inc. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#">Privacy Policy</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Partners</a></li>
+      </ul>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- /container --> 
+@endsection
+
+@section('scripts')
+<link href="css/recruiter.css" rel="stylesheet">
+<style type="text/css">
+0 	  /* Set the fixed height of the footer here */
+ #push, #footer {
+ height: 100px;
+}
+#footer {
+	padding: 10px 0px 10px 20px;
+	background-color: #63656a;
+}
+/* Textual links in masthead */
+.masthead-links {
+	margin: 0;
+	list-style: none;
+	color: #ffffff;
+}
+.masthead-links li {
+	display: inline;
+	padding: 10px 20px 10px 0px;
+}
+.masthead-links li a {
+	color: #ffffff;
+}
+.masthead-links li a:hover {
+	color: #ffffff;
+}
+.footer-links {
+	margin: 0;
+	list-style: none;
+	color: #99999a;
+	padding-top: 10px;
+}
+.footer-links li {
+	display: inline;
+	padding: 10px 20px 10px 0px;
+	color: #99999a;
+}
+.footer-links li a {
+	color: #99999a;
+}
+.footer-links li a:hover, .footer-links li a:focus {
+	color: #99999a;
+}
+.profilename {
+	padding: 20px 20px 20px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000000;
+}
+.profile img {
+	padding: 0px;
+}
+
+.profilename2 {
+	padding: 20px 20px 0px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #73b3dc;
+}
+.profiletab {
+	padding: 10px 20px 10px 20px;
+	font-size: 12px;
+	color: #000000;
+}
+.currentprofiletab {
+	padding: 10px 20px 10px 20px;
+	font-size: 12px;
+	color: #ff0000;
+}
+.table {
+	width: 100%;
+	margin-top: 30px;
+}
+.interest {
+	font-size: 9px;
+	color: #000000;
+}
+.interest-pad {
+	padding: 0 20px 0px 20px;
+}
+.red {
+	color:#ff0000;
+}
+
+
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+#footer {
+	margin-left: -20px;
+	margin-right: -20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+}
+</style>
+@endsection

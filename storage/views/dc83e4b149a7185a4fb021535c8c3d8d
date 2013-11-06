@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><?php echo $title; ?></title>
+<?php echo  HTML::style('css/bootstrap.css') ; ?>
+<?php echo  HTML::style('css/bootstrap-responsive.css') ; ?>
+<?php echo  HTML::script('js/jquery-2.0.0.min.js') ; ?>
+</head>
+<body>
+
+        <div class="container">
+          <?php if (!(Sentry::check())): ?>
+          <div style="float:right;">
+          <div style="float:left;margin-left:5px;font-size:12px;"><?php echo  HTML::link('login', 'Login', array('class'=>'pull-right')); ?></div>
+          <div style="float:left;margin-left:5px;font-size:12px;"><?php echo  HTML::link('signup', 'Signup', array('class'=>'pull-right')); ?></div>
+          </div>
+          <?php else: ?>
+          <?php echo  HTML::link('logout', 'logout', array('class'=>'pull-right')); ?>
+          <?php endif; ?>
+        </div>
+         
+        <?php echo \Laravel\Section::yield('content'); ?>
+       
+
+  </body></html>

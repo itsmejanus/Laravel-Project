@@ -1,0 +1,308 @@
+
+<?php \Laravel\Section::start('content'); ?>
+<style type="text/css">
+body {
+	margin:0px;
+	padding:0px;
+	font-family:Calibri;
+	font-size:12px;
+}
+
+img {
+	border:0px;
+}
+
+h1,h2,h3,h4,h5,h7,p,strong {
+	margin:0px;
+	padding:0px;
+}
+
+.Wrapper {
+	width:999px;
+	margin:0px auto;
+}
+
+.Header {
+	width:100%;
+	float:left;
+	margin:25px 0px 0px 0px;
+}
+
+.Logo {
+	width:auto;
+	float:left;
+	font-size:42px;
+	clear:both;
+}
+
+.Logo a{
+	color:#ED1921;
+	text-decoration:none;
+}
+
+.Logo a span{
+	color:#000000;
+}
+
+.Menu {
+	width:100%;
+	float:left;
+	margin:25px 0px 0px 0px;
+}
+
+.nav {
+	width:100%;
+	float:left;
+}
+
+.nav ul {
+	margin:0px;
+	padding:0px;
+}
+
+.nav li{
+	width:auto;
+	float:left;
+	font-size:15px;
+	list-style:none;
+	margin-right:50px;
+}
+
+.nav li a{
+	color:#000000;
+	text-decoration:none;
+}
+
+.nav li a img{
+	float:left;
+	margin:-5px 5px 0px 0px;
+}
+
+.nav li a:hover{
+	color:#ED1921;
+	text-decoration:none;
+}
+
+.nav li a.active{
+	color:#ED1921;
+	text-decoration:none;
+	font-family:"Courier New", Courier, monospace;
+}
+
+.navmarginA {
+	float:right !important;
+	margin-right:0px !important;
+}
+
+.navmargin {
+	float:right !important;
+}
+
+.profilename2 {
+	padding: 20px 20px 0px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #73b3dc;
+}
+
+</style>
+<script language="javascript">
+function connect_hospital(hospital_id,type,action_type){
+	
+        $.ajax({
+             type: "POST",
+             url: "connecthospital",
+             data: {hospital_id:hospital_id,type:type,action_type:action_type},
+             success: function(msg) {
+				 window.location.reload();
+             }
+       });
+}
+
+function remove_hospital(hospital_id){
+	
+        $.ajax({
+             type: "POST",
+             url: "removehospital",
+             data: {hospital_id:hospital_id},
+             success: function(msg) {
+				 window.location.reload();
+             }
+       });
+}
+
+function hospital_profile(hospital_id){
+	window.location.href="hospitalprofile/"+hospital_id;
+}
+
+</script>
+<?php echo view('layouts.header')->with(get_defined_vars())->render(); ?>
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit-login"> 
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class ="container">
+    <div class="span12">
+    <div class="span650 pull-left"><p><span class="profilename2">Hello Dr. Michael Gray</span> <span class="nav100 recent">Last log-in 08/01/13 5:00pm</span></p></div>
+    <div class="form-pad2 span250 pull-right">
+      <p><span class="bold">My Job Search: </span><span class="redunderline">Active</span></p></div> </div>
+      <div class="span12">
+        <div class="span930 pull-left">
+        	
+            
+           <div class="form-pad2">
+            <div class="bs-table-scrollable">
+                <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td style="font-weight:bold;">Connected Hospitals</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                
+                <table>
+                <tbody width="100%">
+                <tr>
+                <td style="font-weight:bold;">Date Posted</td>
+                <td style="font-weight:bold;">Job Title</td>
+                <td style="font-weight:bold;">Hospital</td>
+                <td style="font-weight:bold;">Recruiter</td>
+                <td style="font-weight:bold;">Location</td>
+                <td style="font-weight:bold;">Status</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+  				 </tr>
+                 </tbody>
+                 <?php foreach ($connectedHosps as $key=>$hospitals): ?>
+                 <tbody>
+                <tr>
+                <td><?php echo $hospitals->date_posted; ?></td>
+                <td><?php echo $hospitals->job_title; ?></td>
+                <td><a href="javascript:void(0)" style="color:#D22D27;" onclick="hospital_profile('<?php echo $hospitals->id; ?>')"><?php echo $hospitals->hname; ?></a></td>
+                <td><?php echo $hospitals->contact_name; ?></td>
+                <td><?php echo $hospitals->location; ?></td>
+                <td><?php echo $hospitals->alias; ?></td>
+                <td><img src="img/physician/attachicon.gif" alt="Unconnect icon" title="Unconnect icon" onclick="connect_hospital('<?php echo $hospitals->id; ?>','physician','unconnect')"></td>
+                <td><img src="img/physician/email.png" alt="email icon" title="email icon"></td>
+                <td><img src="img/physician/trash.png" alt="trash icon" title="trash icon" onclick="remove_hospital('<?php echo $hospitals->id; ?>')"></td>
+  				 </tr>
+                 </tbody>
+                 <?php endforeach; ?>
+   				 </table>
+                
+
+               
+                </td>
+                  </tr>
+                  </tbody>
+              </table>
+                
+              <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td style="font-weight:bold;">Liked Hospitals</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                
+                <table>
+                <tbody width="100%">
+                <tr>
+                <td style="font-weight:bold;">Date Posted</td>
+                <td style="font-weight:bold;">Job Title</td>
+                <td style="font-weight:bold;">Hospital</td>
+                <td style="font-weight:bold;">Location</td>
+                <td style="font-weight:bold;">Status</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+  				 </tr>
+                 </tbody>
+                  <?php foreach ($likedHosps as $key=>$hospitals): ?>
+                 <tbody>
+                <tr>
+                <td><?php echo $hospitals->date_posted; ?></td>
+                <td><?php echo $hospitals->job_title; ?></td>
+                <td><a href="javascript:void(0)" style="color:#D22D27;" onclick="hospital_profile('<?php echo $hospitals->id; ?>')"><?php echo $hospitals->hname; ?></a></td>
+                <td><?php echo $hospitals->location; ?></td>
+                <td><?php echo $hospitals->alias; ?></td>
+               <td><img src="img/physician/connect.png" alt="connect icon" title="connect icon" onclick="connect_hospital('<?php echo $hospitals->id; ?>','physician','connect')"></td>
+                <td><img src="img/physician/unlike.gif" alt="unlike button" title="unlike button" onclick="connect_hospital('<?php echo $hospitals->id; ?>','hospital','unlike')"></td>
+                <td><img src="img/physician/email.png" alt="email icon" title="email icon"></td>
+                <td><img src="img/physician/trash.png" alt="trash icon" title="trash icon" onclick="remove_hospital('<?php echo $hospitals->id; ?>')"></td>
+  				 </tr>
+                 </tbody>
+                 <?php endforeach; ?>
+   				 </table>
+                
+
+               
+                </td>
+                  </tr>
+                  </tbody>
+              </table>          
+                        
+                        <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                <td><span style="float:left;font-weight:bold;">Recommended Hospitals</span><span style="float:left;font-weight:bold;color:#73b3dc; margin-left:20px;">Based upon your current location and your desired locations</span> </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>
+                <table>
+                <tbody width="100%">
+                <tr>
+                <td style="font-weight:bold;">Date Posted</td>
+                <td style="font-weight:bold;">Job Title</td>
+                <td style="font-weight:bold;">Hospital</td>
+                <td style="font-weight:bold;">Location</td>
+                <td style="font-weight:bold;">Status</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+                <td style="font-weight:bold;">&nbsp;</td>
+  				 </tr>
+                 </tbody>
+                 <?php foreach ($recommendedHosps as $key=>$hospitals): ?>
+                  <tbody>
+                <tr>
+                <td><?php echo $hospitals->date_posted; ?></td>
+                <td><?php echo $hospitals->job_title; ?></td>
+                <td><a href="javascript:void(0)" style="color:#D22D27;" onclick="hospital_profile('<?php echo $hospitals->id; ?>')"><?php echo $hospitals->hname; ?></a></td>
+                <td><?php echo $hospitals->location; ?></td>
+                <td><?php echo $hospitals->alias; ?></td>
+               <td><img src="img/physician/connect.png" alt="connect icon" title="connect icon" onclick="connect_hospital('<?php echo $hospitals->id; ?>','physician','connect')"></td>
+                <td><img src="img/physician/like.gif" alt="like button" title="like button" onclick="connect_hospital('<?php echo $hospitals->id; ?>','hospital','like')"></td>
+                <td><img src="img/physician/email.png" alt="email icon" title="email icon"></td>
+                <td><img src="img/physician/trash.png" alt="trash icon" title="trash icon"></td>
+  				 </tr>
+                 </tbody>
+                 <?php endforeach; ?>
+   				 </table>
+                  </tr>
+                          </tbody>
+                        </table>
+            </div>
+                    
+             
+         </div>            
+       
+      </div>
+      
+    </div>
+  </div>
+</div>
+</div>
+
+<?php echo view('layouts.footer')->with(get_defined_vars())->render(); ?>
+<?php \Laravel\Section::stop(); ?>
+
+<?php echo view('layouts.public')->with(get_defined_vars())->render(); ?> 

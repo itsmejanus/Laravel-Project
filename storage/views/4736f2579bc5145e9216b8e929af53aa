@@ -1,0 +1,4 @@
+<?php foreach ($emailList as $email): ?>
+<span style="width:100%;float:left;background-color:#fff; border:1px solid #ccc; padding:5px;" onclick="fill_fields('<?php echo $email->jobid; ?>','<?php echo $key_value; ?>','<?php echo $hospital_id; ?>')"><?php echo $email->contact_email; ?></span>
+<?php endforeach; ?> 
+           

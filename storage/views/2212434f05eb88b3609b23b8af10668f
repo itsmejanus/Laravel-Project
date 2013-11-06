@@ -1,0 +1,75 @@
+
+
+<?php \Laravel\Section::start('content'); ?>
+<!--<h4>My Jobs</H4>-->
+ <!--- Header --->
+  <div class="Header">
+   <div class="Wrapper">
+    <div class="Logo"><a href="#" title="MyJobSearch.us">My<span>Job</span>Search<span>.us</span></a></div>
+	
+	 <div class="Menu">
+	  
+	  <div class="nav">
+	   <ul>
+	    <li><a href="#" title="My Account"><b>My Account</b></a></li>
+		<li><a href="#" title="My Connectons"><b>My Connectons</b></a></li>
+		<li><a href="#" title="My Jobs" class="active"><b>My Jobs</b></a></li>
+		<li><a href="#" title="My Messages"><b>My Messages</b></a></li>
+		<li class="navmargin"><a href="#" title="Find Hospitals"><img src="../images/hospital.jpg" height="21" width="26" /><b>Find Hospitals</b></a></li>
+	   </ul>
+	  </div>
+	 </div>
+   </div>
+  </div>
+  <!--- /Header --->
+<!--- Content --->
+ <div class="Content">
+    <div class="Wrapper">
+	 <h1 class="ContentHeading">Hello Dr. Michael Gray</h1>
+	  
+	  <div class="ContentDataBlock">
+ <table width="997" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+         <td bgcolor="#ffffff" class="TableCalss1" style="padding-top:1%; padding-bottom:1%;">Saved Jobs</td>
+        </tr>
+		<tr>
+         <td>
+ <table width="997" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="183" class="TableCalss2">Date Posted</td>
+    <td width="183" class="TableCalss2">Job Title</td>
+    <td width="183" class="TableCalss2">Hospital</td>
+    <td width="183" class="TableCalss2">Location</td>
+    <td width="183" class="TableCalss2">&nbsp;</td>
+  </tr>
+  <?php foreach ($hospitals as $hospital): ?>
+  <tr>
+    <td class="TableCalss3"><?php echo  $hospital-> date_posted; ?> </td>
+    <!--<td class="TableCalss4"><?php echo  HTML::link('/hospital/'.$hospital->alias, $hospital-> job_title); ?> </td>-->
+   
+    <td class="TableCalss4"><?php echo  $hospital-> job_title; ?> </td>
+    <td class="TableCalss3"><?php echo  $hospital-> hname; ?> </td>
+    <td class="TableCalss3"><?php echo  $hospital-> location; ?> </td>
+    <!--<td class="TableCalss5"><?php echo  HTML::link('/activity', 'Delete Job'); ?> </td>-->
+    <td class="TableCalss5"><?php echo  HTML::link('#', 'Delete Job'); ?> </td>
+  </tr>
+  <?php endforeach; ?>
+</table>
+</td>
+        </tr>
+       </table>
+       </div>
+	 
+	</div>
+   </div>
+  <!--- /Content --->
+    <!--- Footer --->
+   <div class="Footer">
+    <div class="Wrapper">
+    <p class="Footerlink"><a href="#" title="About">About</a>  <a href="#" title="Pricing">Pricing</a> <a href="#" title="Faq">Faq</a> <a href="#" title="Contact Us">Contact Us</a></p>
+    <p>© 2013,My Job Search,Inc.  <a href="#" title="Privacy Policy">Privacy Policy</a> <a href="#" title="Press">Press</a> <a href="#" title="Partners">Partners</a></p>
+	</div>
+   </div>
+  <!--- /Footer --->
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.public')->with(get_defined_vars())->render(); ?>

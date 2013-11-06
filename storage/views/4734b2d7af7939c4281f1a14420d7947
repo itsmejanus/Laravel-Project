@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+<?php echo  HTML::style('css/bootstrap.css') ; ?>
+<?php echo  HTML::style('css/bootstrap-responsive.css') ; ?>
+</head>
+<body>
+
+        <div class="container">
+          <?php if (!(Sentry::check())): ?>
+           <?php echo \Laravel\Section::yield('content'); ?>
+          <?php else: ?>
+          <?php echo  HTML::link('logout', 'logout', array('class'=>'pull-right')); ?>
+          <?php endif; ?>
+        </div>
+       
+
+  </body></html>
+  
+  <!-- Navbar -->
+         

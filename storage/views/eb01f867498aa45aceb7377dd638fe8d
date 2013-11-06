@@ -1,0 +1,6 @@
+
+
+<?php \Laravel\Section::start('content'); ?>
+This is home page
+<?php \Laravel\Section::stop(); ?>
+<?php echo view('layouts.public')->with(get_defined_vars())->render(); ?>
